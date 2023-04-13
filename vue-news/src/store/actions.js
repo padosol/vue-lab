@@ -10,7 +10,6 @@ const actions = {
     FETCH_NEWS(context) {
         fetchNewsList()
         .then(response => {
-            console.log(response.data)
             context.commit('SET_NEWS', response.data);
             this.state.news = response.data;
         })
@@ -30,8 +29,8 @@ const actions = {
     },
     FETCH_ASK(context) {
         fetchAskList()
-        .then(response => {
-            context.commit('SET_ASK', response.data);
+        .then(({data}) => {
+            context.commit('SET_ASK', data);
         })
         .catch(error => {
             console.log(error)
@@ -49,7 +48,6 @@ const actions = {
     FETCH_ITEM({commit}, id) {
         fetchAskDetail(id)
         .then(({ data }) => {
-            console.log(data)
             commit('SET_ITEM', data);
         })
         .catch(error => {

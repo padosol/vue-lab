@@ -1,40 +1,26 @@
 <template>
   <div>
-    <p v-for="news in fetchedNews" v-bind:key="news">
-      <a v-bind:href="news.url">{{ news.title }}</a>
-      <small>
-        {{ news.time_ago }} by 
-        <!-- <router-link v-bind:to="'/user/' +  news.user ">{{ news.user }}</router-link> -->
-        <router-link v-bind:to="`/user/${news.user}`">{{ news.user }}</router-link>
-      </small>
-    </p>
+    <list-item></list-item>
   </div>
 </template>
 
 <script>
-// import axios from 'axios';
-// import { fetchNewsList } from '../api/index';
-import { mapGetters } from 'vuex';
 
-
+import ListItem from '../components/ListItem.vue';
+import bus from '../utils/bus.js';
 
 export default {
-  computed: {
-    ...mapGetters(['fetchedNews'])
-  },      
-   created() {
-    // NewsView가 created 되었을때 store의 dispatch를 이용해서 fetch_news action을 발동 시킴
+  components: {
+    ListItem,
+  },
+  created() {
+    bus.$emit('start:spinner');
     this.$store.dispatch('FETCH_NEWS');
-
-    // // 1
-    // fetchNewsList()
-    // //2
-    // .then(response => this.users = response.data)
-    // .catch(error => console.log(error.message))
-   }
+    bus.$emit('end:spinner');
+  }
 }
 </script>
 
-<style>
+<style scoped>
 
 </style>

@@ -16,14 +16,17 @@ const routes = [
         path: '/news',
         // component: url 주소로 갔을 때 표시될 컴포넌트
         component: NewsView,
+        name: 'FETCH_NEWS'
     },
     {
         path: '/ask',
         component: AskView,
+        name: 'FETCH_ASK'
     },
     {
         path: '/jobs',
         component: JobsView,
+        name: 'FETCH_JOBS'
     },
     {
         path: '/user/:id',
