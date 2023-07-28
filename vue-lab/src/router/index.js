@@ -20,10 +20,8 @@ const router = createRouter({
             ]
         },
         {
-            path: '/test',
-            name: 'test',
-            component: () => import('')
-            
+            path: '/custom',
+            component: () => import('@/view/CustomComponent.vue'),
         }
     ]
 })
