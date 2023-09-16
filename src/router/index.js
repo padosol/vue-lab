@@ -5,6 +5,10 @@ const routes = [
 		path: '/test',
 		name: 'test',
 	},
+	{
+		path: '/ocean'
+		name: 'bay'
+	}
 ];
 
 const router = createRouter({
